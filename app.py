@@ -34,28 +34,28 @@ ball.color("yellow")  # Couleur de la balle
 ball.penup()
 ball.goto(0, 0)  # Position initiale de la balle
 
-#functions
+# Fonctions de mouvement pour les joueurs
 def madrab1_up():
     y = madrab1.ycor()
-    y +=20
+    y += 20
     madrab1.sety(y)
 
 def madrab1_down():
     y = madrab1.ycor()
-    y -=20
+    y -= 20
     madrab1.sety(y)
 
 def madrab2_up():
     y = madrab2.ycor()
-    y +=20
+    y += 20
     madrab2.sety(y)
 
 def madrab2_down():
     y = madrab2.ycor()
-    y -=20
+    y -= 20
     madrab2.sety(y)
 
-#keyborard binding 
+# Liaison des touches du clavier aux fonctions de mouvement
 wind.listen()
 wind.onkeypress(madrab1_up, "s")
 wind.onkeypress(madrab1_down, "w")
