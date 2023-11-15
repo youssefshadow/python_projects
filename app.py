@@ -35,6 +35,16 @@ ball.penup()
 ball.goto(0, 0)  # Position initiale de la balle
 ball.dx = 0.3  # Vitesse initiale de la balle en direction horizontale
 ball.dy = 0.3  # Vitesse initiale de la balle en direction verticale
+#score
+score1 = 0
+score2 = 0
+score = turtle.Turtle()
+score.speed(0)
+score.color("white")
+score.penup()
+score.hideturtle()
+score.goto(0, 260)
+
 
 # Fonctions de mouvement pour les joueurs
 def madrab1_up():
@@ -87,8 +97,23 @@ while True:
     if ball.xcor() > 390:
         ball.goto(0, 0)
         ball.dx *= -1
+        score1 +=1
+        score.clear()
+        score.write("player1 :{} player2: {}".format(score1, score2), align="center",font=("Courier",24,"normal"))
 
     # Sur la gauche
     if ball.xcor() < -390:
         ball.goto(0, 0)
+        ball.dx *= -1
+        score2 += 1
+        score.clear()
+        score.write("player1 :{} player2: {}".format(score1, score2), align="center",font=("Courier",24,"normal"))
+
+    # collision madrab and ball
+    if (ball.xcor() > 340 and ball.xcor() < 350) and (ball.ycor() < madrab2.ycor() + 40 and ball.ycor() > madrab2.ycor() - 40):
+        ball.setx(340)
+        ball.dx *= -1
+
+    if (ball.xcor() < -340 and ball.xcor() > -350) and (ball.ycor() < madrab1.ycor() + 40 and ball.ycor() > madrab1.ycor() - 40):
+        ball.setx(-340)
         ball.dx *= -1
