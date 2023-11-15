@@ -33,6 +33,8 @@ ball.shape("circle")  # Forme de la balle (cercle)
 ball.color("yellow")  # Couleur de la balle
 ball.penup()
 ball.goto(0, 0)  # Position initiale de la balle
+ball.dx = 0.5
+ball.dy = 0.5
 
 # Fonctions de mouvement pour les joueurs
 def madrab1_up():
@@ -65,5 +67,29 @@ wind.onkeypress(madrab2_down, "Down")
 # La boucle principale du jeu
 while True:
     wind.update()  # Mettre à jour la fenêtre
+    #move the ball
+    ball.setx(ball.xcor() + ball.dx)
+    ball.sety(ball.ycor() + ball.dy)
+
+    #border check 
+    #sur le haut
+    if ball.ycor() >290:
+        ball.sety(290)
+        ball.dy *= -1
+    #sur le bas 
+    if ball.ycor() <-290:
+        ball.sety(-290)
+        ball.dy *= +1
+
+    if ball.xcor() > 390:
+        ball.goto(0 ,0)
+        ball.dx *= -1
+
+    if ball.xcor() <-390:
+        ball.goto(0 ,0)
+        ball.dx *= -1
+        
+
+
 
 
